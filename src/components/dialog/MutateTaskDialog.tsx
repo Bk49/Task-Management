@@ -66,11 +66,13 @@ const MutateTaskDialog: React.FC<MutateTaskDialogProps> = ({
                 <Divider />
                 <DialogContent>
                     <FormProvider {...formState}>
-                        <Stack spacing={2}>
+                        <Stack
+                            sx={{ width: { sm: "20rem", md: "30rem" } }}
+                            spacing={2}
+                        >
                             <ControlledTextField
                                 name="title"
                                 aria-label="Title Text Field"
-                                sx={{ width: { sm: "20rem", md: "30rem" } }}
                                 variant="outlined"
                                 label="Title"
                             />

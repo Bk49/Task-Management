@@ -12,11 +12,12 @@ import {
 import MutateTaskDialog from "./components/dialog/MutateTaskDialog";
 import TaskTableHeader from "./components/table/TaskTableHeader";
 import TaskTableRow from "./components/table/TaskTableRow";
-import useTasksForm from "./hooks/useTaskStore";
+import useTaskList from "./hooks/useTaskList";
 import { TaskItem } from "./types/task";
+import TaskTableFilters from "./components/table/TaskTableFilters";
 
 const App = () => {
-    const { tasks } = useTasksForm();
+    const tasks = useTaskList();
 
     return (
         <>
@@ -42,9 +43,11 @@ const App = () => {
                             >
                                 Task List
                             </Typography>
-                            {/* For creating new tasks */}
-                            <MutateTaskDialog />
-                            {/* TODO: Add filters here */}
+                            <Grid2 container flexDirection="row" spacing={2} >
+                                <TaskTableFilters />
+                                {/* For creating new tasks */}
+                                <MutateTaskDialog />
+                            </Grid2>
                         </Toolbar>
                         <Divider />
                         <TableContainer>

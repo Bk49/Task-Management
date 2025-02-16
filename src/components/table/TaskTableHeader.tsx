@@ -1,16 +1,16 @@
 import {
+    TableCell,
     TableHead,
     TableRow,
-    TableCell,
-    Typography,
     TableSortLabel,
+    Typography,
 } from "@mui/material";
 import React from "react";
-import useTaskStore from "../../hooks/useTaskStore";
 import useKeyStore from "../../hooks/useKeyStore";
+import useTaskStore from "../../hooks/useTaskStore";
 
 const TaskTableHeader: React.FC = ({}) => {
-    const { sortTasks, sortBy, direction } = useTaskStore();
+    const { sortBy, direction, setSort } = useTaskStore();
     const { keys } = useKeyStore();
 
     return (
@@ -24,16 +24,7 @@ const TaskTableHeader: React.FC = ({}) => {
                     ...keys.map(({ key }) => key),
                 ].map((label) => (
                     <TableCell
-                        onClick={() =>
-                            sortTasks(
-                                label,
-                                sortBy === label
-                                    ? direction === "asc"
-                                        ? "desc"
-                                        : "asc"
-                                    : direction
-                            )
-                        }
+                        onClick={() => setSort(label)}
                         key={label}
                         aria-label={`${label}-h`}
                     >
