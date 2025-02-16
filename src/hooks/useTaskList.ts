@@ -9,6 +9,8 @@ const useTaskList = () => {
         titleFilter,
         sortBy,
         direction,
+        page,
+        pageSize,
     } = useTaskStore();
 
     return useMemo(() => {
@@ -33,8 +35,11 @@ const useTaskList = () => {
             return a[sortBy] < b[sortBy] ? -1 : a[sortBy] === b[sortBy] ? 0 : 1;
         });
 
-        return direction === "asc" ? sortedAsc : sortedAsc.reverse();
+        const paginatedTasks = (
+            direction === "asc" ? sortedAsc : sortedAsc.reverse()
+        ).slice(page * pageSize, pageSize * (page + 1));
 
+        return paginatedTasks;
     }, [
         tasks,
         priorityFilter,
@@ -42,6 +47,7 @@ const useTaskList = () => {
         titleFilter,
         sortBy,
         direction,
+        page,
     ]);
 };
 

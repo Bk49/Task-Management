@@ -10,11 +10,12 @@ import {
     Typography,
 } from "@mui/material";
 import MutateTaskDialog from "./components/dialog/MutateTaskDialog";
+import TaskTableFilters from "./components/table/TaskTableFilters";
 import TaskTableHeader from "./components/table/TaskTableHeader";
+import TaskTablePagination from "./components/table/TaskTablePagination";
 import TaskTableRow from "./components/table/TaskTableRow";
 import useTaskList from "./hooks/useTaskList";
 import { TaskItem } from "./types/task";
-import TaskTableFilters from "./components/table/TaskTableFilters";
 
 const App = () => {
     const tasks = useTaskList();
@@ -30,9 +31,7 @@ const App = () => {
                 </Typography>
             </header>
             <main>
-                <Grid2 sx={{ py: 2 }} container direction="row" spacing={2}>
-                    {/* TODO: Add custom fields button here */}
-                </Grid2>
+                {/* TODO: Add custom fields button here */}
                 <Box sx={{ width: "100%" }}>
                     <Paper sx={{ width: "100%", mb: 2 }}>
                         <Toolbar sx={{ justifyContent: "space-between" }}>
@@ -43,7 +42,7 @@ const App = () => {
                             >
                                 Task List
                             </Typography>
-                            <Grid2 container flexDirection="row" spacing={2} >
+                            <Grid2 container flexDirection="row" spacing={2}>
                                 <TaskTableFilters />
                                 {/* For creating new tasks */}
                                 <MutateTaskDialog />
@@ -63,6 +62,7 @@ const App = () => {
                                         )
                                     )}
                                 </TableBody>
+                                <TaskTablePagination />
                             </Table>
                         </TableContainer>
                     </Paper>

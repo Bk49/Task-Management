@@ -13,17 +13,21 @@ interface TaskStore {
     editTask: (updatedTask: EditTaskI) => void;
     deleteTask: (taskId: number) => void;
 
-    // For performing sorting, filtering and pagination
+    // For performing sorting and filtering and pagination
     sortBy: keyof TaskItem;
     direction: Sort;
     priorityFilter?: Priority;
     statusFilter?: Status;
     titleFilter: string;
+    page: number;
+    pageSize: number;
 
     setSort: (label: string) => void;
     setPriorityFilter: (priority: Priority) => void;
     setStatusFilter: (status: Status) => void;
     setTitleFilter: (title: string) => void;
+    setPage: (page: number) => void;
+    setPageSize: (pageSize: number) => void;
 }
 
 const useTaskStore = create<TaskStore>((set) => ({
@@ -59,6 +63,8 @@ const useTaskStore = create<TaskStore>((set) => ({
     priorityFilter: undefined,
     statusFilter: undefined,
     titleFilter: "",
+    page: 0,
+    pageSize: 10,
 
     setSort: (label) => {
         console.log("Sort problem");
@@ -71,6 +77,8 @@ const useTaskStore = create<TaskStore>((set) => ({
     setPriorityFilter: (priority) => set(() => ({ priorityFilter: priority })),
     setStatusFilter: (status) => set(() => ({ statusFilter: status })),
     setTitleFilter: (title) => set(() => ({ titleFilter: title })),
+    setPage: (page) => set(() => ({ page })),
+    setPageSize: (pageSize) => set(() => ({ pageSize })),
 }));
 
 export default useTaskStore;
