@@ -17,9 +17,10 @@ const TaskTablePagination: React.FC<TaskTablePaginationProps> = ({}) => {
                     rowsPerPage={pageSize}
                     page={page}
                     onPageChange={(_, pageTo) => setPage(pageTo)}
-                    onRowsPerPageChange={({ target }) =>
-                        setPageSize(parseInt(target.value, 10))
-                    }
+                    onRowsPerPageChange={({ target }) => {
+                        setPage(0);
+                        setPageSize(parseInt(target.value, 10));
+                    }}
                 />
             </TableRow>
         </TableFooter>

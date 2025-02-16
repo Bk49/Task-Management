@@ -48,6 +48,7 @@ const useTaskList = () => {
         sortBy,
         direction,
         page,
+        pageSize,
     ]);
 };
 
