@@ -3,18 +3,18 @@ import {
     priorityOptions,
     statusOptions,
 } from "../../constants/dropdown-options/taskOptions";
-import useTaskStore from "../../hooks/useTaskStore";
-import UnControlledSingleDropdown from "../form/UnControlledSingleDropdown";
+import useTaskComputeStore from "../../hooks/store/useTaskComputeStore";
+import UncontrolledSingleDropdown from "../form/mui-wrapper/UncontrolledSingleDropdown";
 
 interface TaskTableFiltersProps {}
 
 const TaskTableFilters: React.FC<TaskTableFiltersProps> = ({}) => {
     const { priorityFilter, statusFilter, setPriorityFilter, setStatusFilter } =
-        useTaskStore();
+        useTaskComputeStore();
 
     return (
         <>
-            <UnControlledSingleDropdown
+            <UncontrolledSingleDropdown
                 label="Priority Filter"
                 aria-label="Priority Filter Single Option Dropdown"
                 options={priorityOptions}
@@ -22,7 +22,7 @@ const TaskTableFilters: React.FC<TaskTableFiltersProps> = ({}) => {
                 value={priorityFilter}
                 onChange={({ target }) => setPriorityFilter(target.value)}
             />
-            <UnControlledSingleDropdown
+            <UncontrolledSingleDropdown
                 label="Status Filter"
                 aria-label="Status FilterSingle Option Dropdown"
                 options={statusOptions}

@@ -3,7 +3,7 @@ import React from "react";
 import { SelectOption } from "./ControlledSingleDropdrown";
 import { SelectInputProps } from "@mui/material/Select/SelectInput";
 
-interface UnControlledSingleDropdownProps<T> {
+interface UncontrolledSingleDropdownProps<T> {
     label: string;
     "aria-label": string;
     emptySelectionStr: string;
@@ -12,8 +12,8 @@ interface UnControlledSingleDropdownProps<T> {
     onChange: SelectInputProps<T>["onChange"];
 }
 
-const UnControlledSingleDropdown: React.FC<
-    UnControlledSingleDropdownProps<any>
+const UncontrolledSingleDropdown: React.FC<
+    UncontrolledSingleDropdownProps<any>
 > = ({ label, emptySelectionStr, options, onChange, value, ...rest }) => {
     return (
         <Box sx={{ minWidth: 240 }}>
@@ -41,4 +41,4 @@ const UnControlledSingleDropdown: React.FC<
     );
 };
 
-export default UnControlledSingleDropdown;
+export default UncontrolledSingleDropdown;

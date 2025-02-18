@@ -1,11 +1,13 @@
 import { TableFooter, TablePagination, TableRow } from "@mui/material";
 import React from "react";
-import useTaskStore from "../../hooks/useTaskStore";
+import useTaskStore from "../../hooks/store/useTaskStore";
+import useTaskComputeStore from "../../hooks/store/useTaskComputeStore";
 
 interface TaskTablePaginationProps {}
 
 const TaskTablePagination: React.FC<TaskTablePaginationProps> = ({}) => {
-    const { tasks, page, setPage, pageSize, setPageSize } = useTaskStore();
+    const tasks = useTaskStore(({ tasks }) => tasks);
+    const { page, setPage, pageSize, setPageSize } = useTaskComputeStore();
 
     return (
         <TableFooter>

@@ -16,6 +16,7 @@ import TaskTablePagination from "./components/table/TaskTablePagination";
 import TaskTableRow from "./components/table/TaskTableRow";
 import useTaskList from "./hooks/useTaskList";
 import { TaskItem } from "./types/task";
+import MutateCustomFieldsDialog from "./components/dialog/MutateCustomFieldsDialog";
 
 const App = () => {
     const tasks = useTaskList();
@@ -31,10 +32,13 @@ const App = () => {
                 </Typography>
             </header>
             <main>
-                {/* TODO: Add custom fields button here */}
+                <Grid2 container direction="row" spacing={2}>
+                    <MutateTaskDialog />
+                    <MutateCustomFieldsDialog />
+                </Grid2>
                 <Box sx={{ width: "100%" }}>
-                    <Paper sx={{ width: "100%", mb: 2 }}>
-                        <Toolbar sx={{ justifyContent: "space-between" }}>
+                    <Paper sx={{ width: "100%", my: 2 }} elevation={5}>
+                        <Toolbar sx={{ justifyContent: "space-between", py: 1 }}>
                             <Typography
                                 variant="h6"
                                 fontWeight={500}
@@ -44,8 +48,6 @@ const App = () => {
                             </Typography>
                             <Grid2 container flexDirection="row" spacing={2}>
                                 <TaskTableFilters />
-                                {/* For creating new tasks */}
-                                <MutateTaskDialog />
                             </Grid2>
                         </Toolbar>
                         <Divider />

@@ -11,8 +11,8 @@ import {
 } from "@mui/material";
 import { enqueueSnackbar } from "notistack";
 import React, { useState } from "react";
-import useKeyStore from "../../hooks/useKeyStore";
-import useTaskStore from "../../hooks/useTaskStore";
+import useKeyStore from "../../hooks/store/useKeyStore";
+import useTaskStore from "../../hooks/store/useTaskStore";
 import { TaskItem } from "../../types/task";
 
 interface DeleteTaskDialogProps {
@@ -52,7 +52,7 @@ const DeleteTaskDialog: React.FC<DeleteTaskDialogProps> = ({ task }) => {
                             "title",
                             "status",
                             "priority",
-                            ...keys.map(({ key }) => key),
+                            ...keys.map(({ name }) => name),
                         ].map((key) => (
                             <li key={key}>
                                 <Typography>{`${key}: ${task[key]}`}</Typography>

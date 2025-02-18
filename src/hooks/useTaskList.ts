@@ -1,9 +1,11 @@
 import { useMemo } from "react";
-import useTaskStore from "./useTaskStore";
+import useTaskStore from "./store/useTaskStore";
+import useTaskComputeStore from "./store/useTaskComputeStore";
 
 const useTaskList = () => {
+    const tasks = useTaskStore(({ tasks }) => tasks);
+
     const {
-        tasks,
         priorityFilter,
         statusFilter,
         titleFilter,
@@ -11,7 +13,7 @@ const useTaskList = () => {
         direction,
         page,
         pageSize,
-    } = useTaskStore();
+    } = useTaskComputeStore();
 
     return useMemo(() => {
         const filteredTasks = tasks.filter((task) => {

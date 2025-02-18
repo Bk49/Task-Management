@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { SelectOption } from "../../components/form/ControlledSingleDropdrown";
+import { SelectOption } from "../../components/form/mui-wrapper/ControlledSingleDropdrown";
 import { Priority, Status } from "../../types/task";
 
 // TODO: Add some icons for the options

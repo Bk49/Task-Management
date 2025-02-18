@@ -1,10 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
-import addTaskSchema, { AddTaskI } from "../zod/addTaskSchema";
-import editTaskSchema, { EditTaskI } from "../zod/editTaskSchema";
-import useTaskStore from "./useTaskStore";
-import { TaskItem } from "../types/task";
+import addTaskSchema, { AddTaskI } from "../../zod/addTaskSchema";
+import editTaskSchema, { EditTaskI } from "../../zod/editTaskSchema";
+import useTaskStore from "../store/useTaskStore";
+import { TaskItem } from "../../types/task";
 import { enqueueSnackbar } from "notistack";
 
 const useMutateTask = (isEdit: boolean, task?: TaskItem) => {

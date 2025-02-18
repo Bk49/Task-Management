@@ -6,11 +6,11 @@ import {
     Typography,
 } from "@mui/material";
 import React from "react";
-import useKeyStore from "../../hooks/useKeyStore";
-import useTaskStore from "../../hooks/useTaskStore";
+import useKeyStore from "../../hooks/store/useKeyStore";
+import useTaskComputeStore from "../../hooks/store/useTaskComputeStore";
 
 const TaskTableHeader: React.FC = ({}) => {
-    const { sortBy, direction, setSort } = useTaskStore();
+    const { sortBy, direction, setSort } = useTaskComputeStore();
     const { keys } = useKeyStore();
 
     return (
@@ -21,7 +21,7 @@ const TaskTableHeader: React.FC = ({}) => {
                     "title",
                     "status",
                     "priority",
-                    ...keys.map(({ key }) => key),
+                    ...keys.map(({ name }) => name),
                 ].map((label) => (
                     <TableCell
                         onClick={() => setSort(label)}

@@ -15,10 +15,12 @@ import {
     priorityOptions,
     statusOptions,
 } from "../../constants/dropdown-options/taskOptions";
-import useMutateTask from "../../hooks/useMutateTask";
+import useMutateTask from "../../hooks/mutate/useMutateTask";
 import { TaskItem } from "../../types/task";
-import ControlledSingleDropdown from "../form/ControlledSingleDropdrown";
-import ControlledTextField from "../form/ControlledTextField";
+import ControlledSingleDropdown from "../form/mui-wrapper/ControlledSingleDropdrown";
+import ControlledTextField from "../form/mui-wrapper/ControlledTextField";
+import useKeyStore from "../../hooks/store/useKeyStore";
+import CustomFieldInput from "../form/custom-fields/CustomFieldInput";
 
 interface MutateTaskDialogProps {
     isEdit?: boolean;
@@ -31,6 +33,7 @@ const MutateTaskDialog: React.FC<MutateTaskDialogProps> = ({
 }) => {
     const { submitForm, open, handleClose, handleOpen, formState } =
         useMutateTask(isEdit, task);
+    const { keys } = useKeyStore();
 
     return (
         <>
@@ -89,6 +92,9 @@ const MutateTaskDialog: React.FC<MutateTaskDialogProps> = ({
                                 options={statusOptions}
                             />
                             {/* TODO: handle additional fields */}
+                            {keys.map((key) => (
+                                <CustomFieldInput {...key} />
+                            ))}
                         </Stack>
                     </FormProvider>
                 </DialogContent>
