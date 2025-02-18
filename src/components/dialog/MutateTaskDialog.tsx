@@ -91,7 +91,6 @@ const MutateTaskDialog: React.FC<MutateTaskDialogProps> = ({
                                 aria-label="Status Single Option Dropdown"
                                 options={statusOptions}
                             />
-                            {/* TODO: handle additional fields */}
                             {keys.map((key) => (
                                 <CustomFieldInput {...key} />
                             ))}

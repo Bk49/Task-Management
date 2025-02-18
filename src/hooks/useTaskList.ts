@@ -24,7 +24,11 @@ const useTaskList = () => {
                 ? task.status === statusFilter
                 : true;
             const isPassTitleFilter =
-                titleFilter.length > 0 ? task.title === titleFilter : true;
+                titleFilter.length > 0
+                    ? task.title
+                          .toLowerCase()
+                          .includes(titleFilter.toLowerCase())
+                    : true;
 
             return (
                 isPassPriorityFilter && isPassStatusFilter && isPassTitleFilter

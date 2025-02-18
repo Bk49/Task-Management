@@ -5,15 +5,28 @@ import {
 } from "../../constants/dropdown-options/taskOptions";
 import useTaskComputeStore from "../../hooks/store/useTaskComputeStore";
 import UncontrolledSingleDropdown from "../form/mui-wrapper/UncontrolledSingleDropdown";
+import { TextField } from "@mui/material";
 
 interface TaskTableFiltersProps {}
 
 const TaskTableFilters: React.FC<TaskTableFiltersProps> = ({}) => {
-    const { priorityFilter, statusFilter, setPriorityFilter, setStatusFilter } =
-        useTaskComputeStore();
+    const {
+        priorityFilter,
+        statusFilter,
+        setPriorityFilter,
+        setStatusFilter,
+        titleFilter,
+        setTitleFilter,
+    } = useTaskComputeStore();
 
     return (
         <>
+            <TextField
+                label="Search for task by Title"
+                aria-label="Search task by Title Text Field"
+                value={titleFilter}
+                onChange={({ target }) => setTitleFilter(target.value)}
+            />
             <UncontrolledSingleDropdown
                 label="Priority Filter"
                 aria-label="Priority Filter Single Option Dropdown"
