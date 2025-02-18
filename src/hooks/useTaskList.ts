@@ -1,6 +1,8 @@
 import { useMemo } from "react";
 import useTaskStore from "./store/useTaskStore";
 import useTaskComputeStore from "./store/useTaskComputeStore";
+import priorityOrder from "../records/priorityOrder";
+import statusOrder from "../records/statusOrder";
 
 const useTaskList = () => {
     const tasks = useTaskStore(({ tasks }) => tasks);
@@ -37,6 +39,14 @@ const useTaskList = () => {
 
         const sortedAsc = filteredTasks.sort((a, b) => {
             if (!sortBy) return 0;
+
+            if (sortBy === "priority") {
+                return priorityOrder[a.priority] - priorityOrder[b.priority];
+            }
+
+            if (sortBy === "status") {
+                return statusOrder[a.status] - statusOrder[b.status];
+            }
 
             return a[sortBy] < b[sortBy] ? -1 : a[sortBy] === b[sortBy] ? 0 : 1;
         });
