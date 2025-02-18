@@ -75,7 +75,7 @@ const DeleteTaskDialog: React.FC<DeleteTaskDialogProps> = ({ task }) => {
                             deleteTask(task.id);
                             enqueueSnackbar(
                                 `Task '${task.title}' has been deleted`,
-                                { variant: "error" }
+                                { variant: "success" }
                             );
                         }}
                         color="error"
