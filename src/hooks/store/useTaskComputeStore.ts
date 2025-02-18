@@ -2,7 +2,6 @@ import { create } from "zustand";
 import { TaskItem, Priority, Status } from "../../types/task";
 import { Sort } from "../../types/utility";
 
-// TODO: Include filtering by title
 interface TaskComputeStore {
     sortBy: keyof TaskItem;
     direction: Sort;

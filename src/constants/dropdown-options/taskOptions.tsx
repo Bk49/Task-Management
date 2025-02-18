@@ -3,7 +3,6 @@ import StatusChip from "../../components/chips/StatusChip";
 import { SelectOption } from "../../components/form/mui-wrapper/ControlledSingleDropdrown";
 import { Priority, Status } from "../../types/task";
 
-// TODO: Add some icons for the options
 export const priorityOptions: SelectOption<Priority>[] = (
     ["none", "low", "medium", "high", "urgent"] as Priority[]
 ).map(
