@@ -92,7 +92,7 @@ const MutateTaskDialog: React.FC<MutateTaskDialogProps> = ({
                                 options={statusOptions}
                             />
                             {keys.map((key) => (
-                                <CustomFieldInput {...key} />
+                                <CustomFieldInput key={key.name} {...key} />
                             ))}
                         </Stack>
                     </FormProvider>
