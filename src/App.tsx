@@ -9,6 +9,8 @@ import {
     Toolbar,
     Typography,
 } from "@mui/material";
+import HistoryActionButtons from "./components/button/HistoryActionButtons";
+import MutateCustomFieldsDialog from "./components/dialog/MutateCustomFieldsDialog";
 import MutateTaskDialog from "./components/dialog/MutateTaskDialog";
 import TaskTableFilters from "./components/table/TaskTableFilters";
 import TaskTableHeader from "./components/table/TaskTableHeader";
@@ -16,7 +18,6 @@ import TaskTablePagination from "./components/table/TaskTablePagination";
 import TaskTableRow from "./components/table/TaskTableRow";
 import useTaskList from "./hooks/useTaskList";
 import { TaskItem } from "./types/task";
-import MutateCustomFieldsDialog from "./components/dialog/MutateCustomFieldsDialog";
 
 const App = () => {
     const tasks = useTaskList();
@@ -35,10 +36,13 @@ const App = () => {
                 <Grid2 container direction="row" spacing={2}>
                     <MutateTaskDialog />
                     <MutateCustomFieldsDialog />
+                    <HistoryActionButtons />
                 </Grid2>
                 <Box sx={{ width: "100%" }}>
                     <Paper sx={{ width: "100%", my: 2 }} elevation={5}>
-                        <Toolbar sx={{ justifyContent: "space-between", py: 1 }}>
+                        <Toolbar
+                            sx={{ justifyContent: "space-between", py: 1 }}
+                        >
                             <Typography
                                 variant="h6"
                                 fontWeight={500}

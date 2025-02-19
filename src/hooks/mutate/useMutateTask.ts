@@ -1,11 +1,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { enqueueSnackbar } from "notistack";
 import { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
+import { TaskItem } from "../../types/task";
 import addTaskSchema, { AddTaskI } from "../../zod/addTaskSchema";
 import editTaskSchema, { EditTaskI } from "../../zod/editTaskSchema";
+import useHistoryStore from "../store/useHistoryStore";
 import useTaskStore from "../store/useTaskStore";
-import { TaskItem } from "../../types/task";
-import { enqueueSnackbar } from "notistack";
 
 const useMutateTask = (isEdit: boolean, task?: TaskItem) => {
     const [open, setOpen] = useState(false);
@@ -21,12 +22,19 @@ const useMutateTask = (isEdit: boolean, task?: TaskItem) => {
                   },
     });
     const { handleSubmit, reset } = formState;
-    const { addTask, editTask } = useTaskStore();
+
+    const { addTask, editTask, nextId } = useTaskStore();
+    const { addHistory } = useHistoryStore();
 
     const submitForm = useCallback(
         handleSubmit(
             (data) => {
                 isEdit ? editTask(data as EditTaskI) : addTask(data);
+                addHistory({
+                    operation: isEdit ? "edit-task" : "add-task",
+                    next: { ...data, id: (data?.id as number) ?? nextId },
+                    prev: task,
+                });
 
                 enqueueSnackbar(
                     `Successfully ${isEdit ? "edited" : "added"} '${
