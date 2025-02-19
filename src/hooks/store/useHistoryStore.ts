@@ -9,6 +9,7 @@ interface HistoryStore {
     undo: (currentState: TaskItem[]) => History | undefined;
     redo: (currentState: TaskItem[]) => History | undefined;
     addHistory: (newHistory: History) => void;
+    reset: () => void;
 }
 
 const useHistoryStore = create<HistoryStore>((set, get) => ({
@@ -48,6 +49,8 @@ const useHistoryStore = create<HistoryStore>((set, get) => ({
                 undoList: [],
             };
         }),
+
+    reset: () => set(() => ({ history: [], undoList: [] })),
 }));
 
 export default useHistoryStore;

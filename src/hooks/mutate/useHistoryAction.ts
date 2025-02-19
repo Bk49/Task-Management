@@ -15,7 +15,6 @@ const useHistoryActions = () => {
             const { operation, next, prev } = history;
             const snackString = operation.split("-").join(" ");
 
-            // setTasks(action === "undo" ? snapshot : redoHistory!);
             switch (operation) {
                 case "add-task":
                     action === "redo" ? addTask(next) : deleteTask(next.id);

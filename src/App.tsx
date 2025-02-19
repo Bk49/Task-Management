@@ -6,16 +6,15 @@ import {
     Table,
     TableBody,
     TableContainer,
-    Toolbar,
     Typography,
 } from "@mui/material";
 import HistoryActionButtons from "./components/button/HistoryActionButtons";
 import MutateCustomFieldsDialog from "./components/dialog/MutateCustomFieldsDialog";
 import MutateTaskDialog from "./components/dialog/MutateTaskDialog";
-import TaskTableFilters from "./components/table/TaskTableFilters";
 import TaskTableHeader from "./components/table/TaskTableHeader";
 import TaskTablePagination from "./components/table/TaskTablePagination";
 import TaskTableRow from "./components/table/TaskTableRow";
+import TaskTableToolbar from "./components/table/TaskTableToolbar";
 import useTaskList from "./hooks/useTaskList";
 import { TaskItem } from "./types/task";
 
@@ -40,20 +39,7 @@ const App = () => {
                 </Grid2>
                 <Box sx={{ width: "100%" }}>
                     <Paper sx={{ width: "100%", my: 2 }} elevation={5}>
-                        <Toolbar
-                            sx={{ justifyContent: "space-between", py: 1 }}
-                        >
-                            <Typography
-                                variant="h6"
-                                fontWeight={500}
-                                component="h2"
-                            >
-                                Task List
-                            </Typography>
-                            <Grid2 container flexDirection="row" spacing={2}>
-                                <TaskTableFilters />
-                            </Grid2>
-                        </Toolbar>
+                        <TaskTableToolbar />
                         <Divider />
                         <TableContainer>
                             <Table>
