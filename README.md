@@ -32,15 +32,17 @@ The application has been hosted on (Render)[https://task-management-hdpj.onrende
 5. Custom fields are not supposed to be persisted for all tasks if they are deleted at any point of time (e.g. Supposed `deadline` is added, task with `id` 1 has been assigned a deadline. Deleting the `deadline` field will result in the lost of the deadline being assigned to task `id` 1)
 6. Priority and Status are sorted according to most to least high priority or "done-ness" respectively, not alphabetically
 7. Maintainability of code carries more importance over performance, therefore packages used are also introduced 
+8. Redo-ing actions will empty the history of actions that can be undo (for consistency)
 
 
 ## Bonus Milestones
 
 1. Addition of snackbars using notistack for better user feedback upon errors and form submission
+2. Undo and redo function has been added for add, edit and delete task (Does not include bulk actions)
+3. Multiselect for bulk deletion
 
 
 ## Interesting Things
 
 1. It is my first time using Zustand, previous projects has either no need for global state management (Using React Query for fetched data persistance and useAuth0 for user related data) or has been using useContext (For its simplicity)
 2. The decision to perform manual sorting without using libraries like (fast-sort)[https://github.com/snovakovic/fast-sort] is on purpose since the requirements purposely highlighted to not use DataTable
-3. 
