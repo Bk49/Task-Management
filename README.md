@@ -1,5 +1,9 @@
 # Task Management Application
 
+A task management app that I have created back when I was doing the take-home assignment for a full-time position as graduate FE developer for GreatFrontEnd.
+My code submission received a "Received with thanks", and no replies thereafter (classic 2025 tech scene move). But the source code is here for your perusal.
+I wouldn't call it the best, but there are attempts and effort made to make it more maintainable despite that this project is supposed to be done in a week worth of time (During my school term as well to make it worse).
+
 ## Setup
 
 1. Clone the repository to local machine 
